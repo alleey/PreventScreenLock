@@ -66,15 +66,15 @@ jobs:
       shell: pwsh
       run: ./publish/publish.ps1 -version "${{ steps.metadata.outputs.value }}"
 
-    - name: Deploy
+    - name: Upload to Github Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./clickonce
 
-    - name: Zip ClickOnce Directory
+    - name: Zip Artifacts
       run: |
-        zip -r PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip ./clickonce
+        powershell -Command "Compress-Archive -Path 'clickonce/*' -DestinationPath 'PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip'"
 
     - name: Release Artifacts
       uses: actions/upload-release-asset@v1
