@@ -30,14 +30,14 @@ jobs:
           Clickonce installer available from https://alleey.github.io/preventscreenlock/#/Publish.html
         draft: true
         prerelease: false
-        
+
   build:
     runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+
     - name: Read meta data
       id: metadata
       uses: actions/github-script@v6
@@ -57,14 +57,14 @@ jobs:
           const version = latestTag.startsWith('v') ? latestTag.substring(1) : latestTag;
           console.log(`Tag:${latestTag} -> Version:${version}`);
           core.setOutput('value', version)
-          
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src/App/App.csproj
 
     - name: Publish ClickOnce
       run: dotnet publish src/App/App.csproj -p:PublishProfile=ClickOnceProfile -p:Configuration=Release
@@ -73,7 +73,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: clickonce
-        
+
     - name: Attach Web Bundle
       uses: actions/upload-release-asset@v1
       env:
