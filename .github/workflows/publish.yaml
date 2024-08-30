@@ -1,0 +1,85 @@
+name: Publish ClickOnce
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*.*.*'
+
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: windows-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
+        body: |
+          Clickonce installer available from https://alleey.github.io/preventscreenlock/#/Publish.html
+        draft: true
+        prerelease: false
+        
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Read meta data
+      id: metadata
+      uses: actions/github-script@v6
+      env:
+        LINK_DONATE: ${{ secrets.LINK_DONATE }}
+        LINK_FEEDBACK: ${{ secrets.LINK_FEEDBACK }}
+      with:
+        script: |
+          const { execSync } = require('child_process');
+          let latestTag;
+          try {
+            latestTag = execSync('git describe --abbrev=0 --tags').toString().trim();
+          } catch (error) {
+            console.log('No tags found, using default version 0.0.1');
+            latestTag = 'v0.0.1';
+          }
+          const version = latestTag.startsWith('v') ? latestTag.substring(1) : latestTag;
+          console.log(`Tag:${latestTag} -> Version:${version}`);
+          core.setOutput('value', version)
+          
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Publish ClickOnce
+      run: dotnet publish src/App/App.csproj -p:PublishProfile=ClickOnceProfile -p:Configuration=Release
+
+    - name: Deploy Web
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: clickonce
+        
+    - name: Attach Web Bundle
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.setup.outputs.upload_url }}
+        asset_path: clickonce/
+        asset_name: preventscreenlock-${{ steps.metadata.outputs.value }}.zip
+        asset_content_type: application/zip

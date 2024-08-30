@@ -1,0 +1,40 @@
+name: Publish ClickOnce
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '**'
+      - "!main"
+      
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Publish ClickOnce
+      run: dotnet publish src/App/App.csproj -p:PublishProfile=ClickOnceProfile -p:Configuration=Release
+
+    - name: Attach AppBundle
+      uses: actions/upload-artifact@v3
+      with:
+        name: preventscreenlock-${{ github.ref_name }}-${{ github.sha }}
+        path: clickonce/
+        
