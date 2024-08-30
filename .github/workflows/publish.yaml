@@ -65,10 +65,11 @@ jobs:
       run: ./publish.ps1 -version "${{ steps.metadata.outputs.value }}"
       working-directory: src/
 
-    - name: Deploy Web
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        folder: clickonce
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./clickonce
 
     - name: Release Artifacts
       uses: actions/upload-release-asset@v1
