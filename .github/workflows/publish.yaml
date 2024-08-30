@@ -63,8 +63,8 @@ jobs:
       with:
         dotnet-version: '8.x'
 
-    - name: Restore dependencies
-      run: dotnet restore src/App/App.csproj
+    - name: Build
+      run: dotnet build src/App/App.csproj -p:Configuration=Release
 
     - name: Publish ClickOnce
       run: dotnet publish src/App/App.csproj -p:PublishProfile=src/App/Properties/PublishProfiles/ClickOnceProfile.pubxml -p:Configuration=Release
