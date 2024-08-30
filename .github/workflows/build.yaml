@@ -27,7 +27,7 @@ jobs:
         dotnet-version: '8.x'
 
     - name: Publish ClickOnce
-      run: dotnet publish App.csproj -p:PublishProfile=ClickOnceProfile -p:Configuration=Release
+      run: build -c Release /p:DeployOnBuild=true -p:PublishProfile=ClickOnceProfile App.csproj
       working-directory: src/App
 
     - name: Attach AppBundle
