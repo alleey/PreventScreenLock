@@ -3,12 +3,14 @@ using PreventScreenLock.App.UseCases.Interfaces;
 using PreventScreenLock.App.UseCases.Services;
 using PreventScreenLock.App.Core.Interfaces;
 using PreventScreenLock.App.Infrastructure.Services;
+using PreventScreenLock.App.Core.Extensions;
 
 namespace PreventScreenLock.App
 {
-
     internal static class Program
     {
+        private const string AppTitle = "PreventScreenLock";
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -19,6 +21,17 @@ namespace PreventScreenLock.App
             ConfigureServices(serviceCollection);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var apiResolver = serviceProvider.GetRequiredService<IApiResolver>(); 
+            if (!apiResolver.IsSetThreadExecutionStateAvailable())
+            {
+                MessageBox.Show(
+                    "Application does not support this version of Windows.",
+                    AppTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
 
             // Resolve the main form and run the application
             var singleInstanceRunner = serviceProvider.GetRequiredService<ISingleInstanceRunner>();
@@ -33,7 +46,7 @@ namespace PreventScreenLock.App
                 MessageBox.Show(
                     "Another instance of the application is already running. " +
                     "Please check system tray to bring up the existing application.",
-                    "PreventScreenLock",
+                    AppTitle,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             });
@@ -50,6 +63,7 @@ namespace PreventScreenLock.App
             // Infrastructure services
             services.AddSingleton<IRegistryService, RegistryService>();
             services.AddSingleton<ICommandLineService, CommandLineService>();
+            services.AddSingleton<IApiResolver, ApiResolver>();
 
             // Presentation layer - forms
             services.AddTransient<MainForm>();

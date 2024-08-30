@@ -26,9 +26,10 @@ jobs:
       with:
         dotnet-version: '8.x'
 
-    - name: Publish ClickOnce
-      run: dotnet build -c Release /p:DeployOnBuild=true -p:PublishProfile=ClickOnceProfile App.csproj
-      working-directory: src/App
+    - name: Publish
+      shell: pwsh
+      run: ./publish.ps1 -version "0.0.0.0"
+      working-directory: src/
 
     - name: Attach AppBundle
       uses: actions/upload-artifact@v3
