@@ -54,58 +54,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" size="64288">
+  <file name="PreventScreenLock.App.exe" size="333038">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>oBBqY4+srmIfhw7acgy2yYDB1dScL0NRE04/4EO5KRs=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Microsoft.Extensions.DependencyInjection.dll" size="92320">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jW57ZMzlVPCg+9srqAdFiV+gtObMN4uf7f6M6G8NiuQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="PreventScreenLock.App.deps.json" size="2045">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>cW9Lftaon2Llp+LRl00Esmctef9tWAK99Wru6blnz+Q=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="PreventScreenLock.App.dll" size="27648">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ZpuQHoGMgTsNOH95TX+vLHA0aBVy7G8vjI3iCiKForw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="PreventScreenLock.App.exe" size="139776">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mhTQWSi4bnxyzPsck2HWRJ1oAIoVyLEutPMvJrztgSU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="PreventScreenLock.App.runtimeconfig.json" size="458">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xxFSvyXkDWR7JEDFs5vhV6PTVhBr6dW2eKuXu4e054I=</dsig:DigestValue>
+      <dsig:DigestValue>NIYUQz8bbWI6xkQA5ZhdkA2jIOaqXCUjYZ7daFN1W5s=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\cloud.ico" size="1078">
