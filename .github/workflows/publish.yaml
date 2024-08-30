@@ -63,11 +63,8 @@ jobs:
       with:
         dotnet-version: '8.x'
 
-    - name: Build
-      run: dotnet build src/App/App.csproj -p:Configuration=Release
-
     - name: Publish ClickOnce
-      run: dotnet publish src/App/App.csproj -p:PublishProfile=src/App/Properties/PublishProfiles/ClickOnceProfile.pubxml -p:Configuration=Release
+      run: dotnet publish --no-self-contained --output clickonce src/App/App.csproj
 
     - name: Deploy Web
       uses: JamesIves/github-pages-deploy-action@v4
