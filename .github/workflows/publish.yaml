@@ -31,8 +31,13 @@ jobs:
         draft: true
         prerelease: false
 
+  build:
+    runs-on: windows-latest
+    needs: [setup]
     - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for tags
 
     - name: Read meta data
       id: metadata
