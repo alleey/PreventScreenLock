@@ -67,7 +67,7 @@ jobs:
       run: dotnet restore src/App/App.csproj
 
     - name: Publish ClickOnce
-      run: dotnet publish src/App/App.csproj -p:PublishProfile=ClickOnceProfile -p:Configuration=Release
+      run: dotnet publish src/App/App.csproj -p:PublishProfile=src/App/Properties/PublishProfiles/ClickOnceProfile.pubxml -p:Configuration=Release
 
     - name: Deploy Web
       uses: JamesIves/github-pages-deploy-action@v4
