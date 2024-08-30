@@ -31,7 +31,7 @@ jobs:
       run: ./publish.ps1 -version "0.0.0.0"
       working-directory: src/
 
-    - name: Attach AppBundle
+    - name: Attach Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: preventscreenlock-${{ github.ref_name }}-${{ github.sha }}

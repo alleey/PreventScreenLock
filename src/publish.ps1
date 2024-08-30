@@ -26,7 +26,8 @@ if (Test-Path $outDir) {
 
 # Publish the application.
 Push-Location $projDir
-try {
+try
+{
     Write-Output "Working directory: $pwd"
 
     Write-Output "Restoring:"
@@ -37,17 +38,15 @@ try {
     if ($env:CI) {
         $msBuildVerbosityArg = ""
     }
+
     & $msBuildPath /target:publish `
-        /p:PublishProfile=Properties/PublishProfiles/ClickOnceProfile.pubxml `
+        /p:PublishProfile=ClickOnceProfile `
         /p:PublishDir=$publishDir `
         /p:PublishUrl=$publishUrl `
         /p:Configuration=Release `
         $msBuildVerbosityArg App.csproj
-
-    # Measure publish size.
-    $publishSize = (Get-ChildItem -Path "$publishDir/Application Files" -Recurse | Measure-Object -Property Length -Sum).Sum / 1Mb
-    Write-Output ("Published size: {0:N2} MB" -f $publishSize)
 }
-finally {
+finally
+{
     Pop-Location
 }
