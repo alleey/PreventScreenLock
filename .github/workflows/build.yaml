@@ -28,8 +28,7 @@ jobs:
 
     - name: Publish
       shell: pwsh
-      run: ./publish.ps1 -version "0.0.0.0"
-      working-directory: src/
+      run: ./publish/publish.ps1 -version "0.0.0.0"
 
     - name: Attach Artifacts
       uses: actions/upload-artifact@v4

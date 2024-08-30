@@ -4,7 +4,7 @@ param (
 )
 
 $appName = "PreventScreenLock"
-$projDir = "App"
+$projDir = "src/App"
 
 Set-StrictMode -version 2.0
 $ErrorActionPreference = "Stop"
@@ -17,7 +17,7 @@ Write-Output "MSBuild: $((Get-Command $msBuildPath).Path)"
 
 # Clean output directory.
 $publishDir = "../../clickonce"
-$publishUrl = "https://alleey.github.io/preventscreenlock/#/"
+$publishUrl = "https://alleey.github.io/preventscreenlock/"
 
 $outDir = "$projDir/$publishDir"
 if (Test-Path $outDir) {
@@ -35,12 +35,10 @@ try
 
     Write-Output "Publishing:"
     $msBuildVerbosityArg = "/v:m"
-    if ($env:CI) {
-        $msBuildVerbosityArg = ""
-    }
 
     & $msBuildPath /target:publish `
-        /p:PublishProfile=Properties\PublishProfiles\ClickOnceProfile.pubxml `
+        /p:PublishProfile=ClickOnceProfile `
+        /p:RuntimeIdentifier=win-x64 /p:PublishSingleFile=true `
         /p:PublishDir=$publishDir `
         /p:PublishUrl=$publishUrl `
         /p:Configuration=Release `
@@ -50,4 +48,20 @@ try
 finally
 {
     Pop-Location
+}
+
+# Copy and update index.html
+$publishFolder = "./publish"
+$indexFilePath = Join-Path -Path $outDir -ChildPath 'index.html'
+$sourceIndexFilePath = Join-Path -Path $publishFolder -ChildPath 'index.html'
+
+if (Test-Path $sourceIndexFilePath) {
+    Copy-Item -Path $sourceIndexFilePath -Destination $indexFilePath -Force
+    Write-Output "Copied $sourceIndexFilePath to $indexFilePath"
+
+    # Replace {{version}} with the actual version
+    (Get-Content -Path $indexFilePath) -replace '{{version}}', $version | Set-Content -Path $indexFilePath
+    Write-Output "Replaced {{version}} in $indexFilePath with version $version"
+} else {
+    Write-Error "Source file $sourceIndexFilePath does not exist"
 }
