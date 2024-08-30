@@ -27,7 +27,7 @@ jobs:
         tag_name: ${{ github.ref_name }}
         release_name: Release ${{ github.ref_name }}
         body: |
-          ClickOnce installer available: https://alleey.github.io/preventscreenlock/#/PreventScreenLock.App.application
+          ClickOnce installer available: https://alleey.github.io/preventscreenlock/
         draft: true
         prerelease: false
 
@@ -62,8 +62,7 @@ jobs:
 
     - name: Publish
       shell: pwsh
-      run: ./publish.ps1 -version "${{ steps.metadata.outputs.value }}"
-      working-directory: src/
+      run: ./publish/publish.ps1 -version "${{ steps.metadata.outputs.value }}"
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
