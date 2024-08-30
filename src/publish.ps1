@@ -40,7 +40,7 @@ try
     }
 
     & $msBuildPath /target:publish `
-        /p:PublishProfile=ClickOnceProfile `
+        /p:PublishProfile=Properties\PublishProfiles\ClickOnceProfile.pubxml `
         /p:PublishDir=$publishDir `
         /p:PublishUrl=$publishUrl `
         /p:Configuration=Release `
