@@ -17,7 +17,7 @@ Write-Output "MSBuild: $((Get-Command $msBuildPath).Path)"
 
 # Clean output directory.
 $publishDir = "../../clickonce"
-$publishUrl = "https://alleey.github.io/preventscreenlock/"
+$publishUrl = "https://alleey.github.io/PreventScreenLock/"
 
 $outDir = "$projDir/$publishDir"
 if (Test-Path $outDir) {

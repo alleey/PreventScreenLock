@@ -27,12 +27,9 @@ jobs:
         tag_name: ${{ github.ref_name }}
         release_name: Release ${{ github.ref_name }}
         body: |
-          ClickOnce installer available: https://alleey.github.io/preventscreenlock/
+          ClickOnce installer available: https://alleey.github.io/PreventScreenLock/
         draft: true
         prerelease: false
-
-  build:
-    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
