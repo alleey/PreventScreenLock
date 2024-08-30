@@ -8,7 +8,7 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="https://alleey.github.io/preventscreenlock/PreventScreenLock.App.application" />
+    <deploymentProvider codebase="https://alleey.github.io/PreventScreenLock/PreventScreenLock.App.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/k/Ekg2KJUJM6fq6K7QamNE1Z2e0J4KT0Kt8xjHKqFU=</dsig:DigestValue>
+        <dsig:DigestValue>IKcO6/3ce2e/rrD3oVHZJeLBIdWGPRQN9oGq7AGPWwc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -60,7 +60,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>9cjSxnQP2L7+Ref2YctLWKq/i2Kvc9BCPF916TPUhyo=</dsig:DigestValue>
+      <dsig:DigestValue>Yyr7USLPKTxGLPXnyRQ/7iE2L954ZdKcD+bJ9SDtdpE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\cloud.ico" size="1078">
