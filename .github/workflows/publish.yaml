@@ -72,12 +72,16 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./clickonce
 
+    - name: Zip ClickOnce Directory
+      run: |
+        zip -r PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip ./clickonce
+
     - name: Release Artifacts
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.setup.outputs.upload_url }}
-        asset_path: clickonce/
-        asset_name: preventscreenlock-${{ steps.metadata.outputs.value }}.zip
+        asset_path: PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip
+        asset_name: PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip
         asset_content_type: application/zip
