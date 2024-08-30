@@ -1,10 +1,10 @@
-name: Publish ClickOnce
+name: Release ClickOnce
 
 on:
   workflow_dispatch:
   push:
     tags:
-      - 'v*.*.*'
+      - 'v*.*.*.*'
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -27,7 +27,7 @@ jobs:
         tag_name: ${{ github.ref_name }}
         release_name: Release ${{ github.ref_name }}
         body: |
-          Clickonce installer available from https://alleey.github.io/preventscreenlock/#/Publish.html
+          ClickOnce installer available: https://alleey.github.io/preventscreenlock/#/PreventScreenLock.App.application
         draft: true
         prerelease: false
 
@@ -48,8 +48,8 @@ jobs:
           try {
             latestTag = execSync('git describe --abbrev=0 --tags').toString().trim();
           } catch (error) {
-            console.log('No tags found, using default version 0.0.1');
-            latestTag = 'v0.0.1';
+            console.log('No tags found, using default version 0.0.0.1');
+            latestTag = 'v0.0.0.1';
           }
           const version = latestTag.startsWith('v') ? latestTag.substring(1) : latestTag;
           console.log(`Tag:${latestTag} -> Version:${version}`);
