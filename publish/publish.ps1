@@ -37,6 +37,7 @@ try
     $msBuildVerbosityArg = "/v:m"
 
     & $msBuildPath /target:publish `
+        /p:ApplicationVersion=$version /p:AssemblyVersion=$version /p:FileVersion=$version /p:Version=$version `
         /p:PublishProfile=ClickOnceProfile `
         /p:RuntimeIdentifier=win-x64 /p:PublishSingleFile=true `
         /p:PublishDir=$publishDir `
