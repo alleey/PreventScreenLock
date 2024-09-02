@@ -4,13 +4,12 @@ using PreventScreenLock.App.UseCases.Services;
 using PreventScreenLock.App.Core.Interfaces;
 using PreventScreenLock.App.Infrastructure.Services;
 using PreventScreenLock.App.Core.Extensions;
+using PreventScreenLock.App.Presentation;
 
 namespace PreventScreenLock.App
 {
     internal static class Program
     {
-        private const string AppTitle = "PreventScreenLock";
-
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -27,7 +26,7 @@ namespace PreventScreenLock.App
             {
                 MessageBox.Show(
                     "Application does not support this version of Windows.",
-                    AppTitle,
+                    UIConstants.AppTitle,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
@@ -46,7 +45,7 @@ namespace PreventScreenLock.App
                 MessageBox.Show(
                     "Another instance of the application is already running. " +
                     "Please check system tray to bring up the existing application.",
-                    AppTitle,
+                    UIConstants.AppTitle,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             });

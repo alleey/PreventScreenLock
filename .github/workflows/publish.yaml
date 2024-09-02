@@ -31,8 +31,13 @@ jobs:
         draft: true
         prerelease: false
 
-    - name: Checkout repository
-      uses: actions/checkout@v4
+  build:
+    runs-on: windows-latest
+    needs: [setup]
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for tags
 
     - name: Read meta data
       id: metadata
@@ -45,6 +50,7 @@ jobs:
             latestTag = execSync('git describe --abbrev=0 --tags').toString().trim();
           } catch (error) {
             console.log('No tags found, using default version 0.0.0.1');
+            console.log(error);
             latestTag = 'v0.0.0.1';
           }
           const version = latestTag.startsWith('v') ? latestTag.substring(1) : latestTag;
@@ -60,11 +66,15 @@ jobs:
       shell: pwsh
       run: ./publish/publish.ps1 -version "${{ steps.metadata.outputs.value }}"
 
-    - name: Deploy
+    - name: Upload to Github Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./clickonce
+
+    - name: Zip Artifacts
+      run: |
+        powershell -Command "Compress-Archive -Path 'clickonce/*' -DestinationPath 'PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip'"
 
     - name: Release Artifacts
       uses: actions/upload-release-asset@v1
@@ -72,6 +82,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.setup.outputs.upload_url }}
-        asset_path: clickonce/
-        asset_name: preventscreenlock-${{ steps.metadata.outputs.value }}.zip
+        asset_path: PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip
+        asset_name: PreventScreenLock-v${{ steps.metadata.outputs.value }}.zip
         asset_content_type: application/zip

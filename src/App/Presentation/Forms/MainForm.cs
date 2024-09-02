@@ -1,5 +1,7 @@
 using PreventScreenLock.App.Core.Interfaces;
 using PreventScreenLock.App.Infrastructure.Services;
+using PreventScreenLock.App.Presentation;
+using System.Reflection;
 
 namespace PreventScreenLock.App
 {
@@ -19,6 +21,8 @@ namespace PreventScreenLock.App
             _notificationService = notificationService;
 
             InitializeComponent();
+            string version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "1.0.0.0";
+            this.Text = $"{UIConstants.AppTitle} v{version}";
 
             _notificationService.RequestAttention += ShowMainWindow;
             if (launchSettings.StartMinimized)
