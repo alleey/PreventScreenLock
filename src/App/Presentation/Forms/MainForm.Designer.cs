@@ -66,10 +66,10 @@
             // btnPreventLock
             // 
             btnPreventLock.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnPreventLock.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPreventLock.Location = new Point(14, 86);
+            btnPreventLock.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPreventLock.Location = new Point(14, 97);
             btnPreventLock.Name = "btnPreventLock";
-            btnPreventLock.Size = new Size(419, 171);
+            btnPreventLock.Size = new Size(419, 155);
             btnPreventLock.TabIndex = 0;
             btnPreventLock.Text = "Disable Screen Lock";
             btnPreventLock.UseVisualStyleBackColor = true;
@@ -109,12 +109,12 @@
             // linkSettings
             // 
             linkSettings.AutoSize = true;
-            linkSettings.Location = new Point(164, 60);
+            linkSettings.Location = new Point(312, 60);
             linkSettings.Name = "linkSettings";
-            linkSettings.Size = new Size(119, 20);
+            linkSettings.Size = new Size(122, 20);
             linkSettings.TabIndex = 2;
             linkSettings.TabStop = true;
-            linkSettings.Text = "launch options ...";
+            linkSettings.Text = "Launch options ...";
             linkSettings.LinkClicked += linkSettings_LinkClicked;
             // 
             // MainForm
