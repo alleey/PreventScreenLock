@@ -54,13 +54,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="PreventScreenLock.App.exe" size="333038">
+  <file name="PreventScreenLock.App.exe" size="333042">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2Lox23Szg0ORMtF+zVWdDeOak7yW3lyCg0qd5+37tGc=</dsig:DigestValue>
+      <dsig:DigestValue>z0xIycHe7jPFIKpYPLkwzPcbqGtFDKYc436bC8I8uOw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\cloud.ico" size="1078">
