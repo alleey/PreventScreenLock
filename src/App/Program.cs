@@ -26,7 +26,7 @@ namespace PreventScreenLock.App
             {
                 MessageBox.Show(
                     "Application does not support this version of Windows.",
-                    UIConstants.AppTitle,
+                    UIConstants.AppTitleWithVersion,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
@@ -45,7 +45,7 @@ namespace PreventScreenLock.App
                 MessageBox.Show(
                     "Another instance of the application is already running. " +
                     "Please check system tray to bring up the existing application.",
-                    UIConstants.AppTitle,
+                    UIConstants.AppTitleWithVersion,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             });

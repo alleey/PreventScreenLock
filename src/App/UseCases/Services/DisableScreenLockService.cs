@@ -27,7 +27,9 @@ namespace PreventScreenLock.App.Infrastructure.Services
             _updateInterval = updateInterval;
         }
 
-        public bool IsLocked => _isRunning;
+        public event Action<ScreenLockStatus>? LockStatusChanged;
+
+        public ScreenLockStatus LockStatus => _isRunning ? ScreenLockStatus.Disabled : ScreenLockStatus.Enabled;
 
         public void Start()
         {
@@ -38,6 +40,7 @@ namespace PreventScreenLock.App.Infrastructure.Services
                 _timer.Elapsed += OnTimerElapsed;
                 _timer.Start();
                 UpdateScreenLock();
+                LockStatusChanged?.Invoke(LockStatus);
             }
         }
 
@@ -50,6 +53,7 @@ namespace PreventScreenLock.App.Infrastructure.Services
                 _timer?.Dispose();
                 _timer = null;
                 UpdateScreenLock();
+                LockStatusChanged?.Invoke(LockStatus);
             }
         }
 
