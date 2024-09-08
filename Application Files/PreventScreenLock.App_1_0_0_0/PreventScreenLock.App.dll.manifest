@@ -60,7 +60,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6edG2/Ntbm9gDkI5FyaBg+MbQ+deXWflU06u9Y4bJz4=</dsig:DigestValue>
+      <dsig:DigestValue>4JZhEP7hXCRS1oOS6VVzKH1P+myJ8wDeTpLXEIEkUvk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\unlocked.ico" size="38078">
