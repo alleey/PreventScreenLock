@@ -8,20 +8,20 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="https://alleey.github.io/preventscreenlock/PreventScreenLock.App.application" />
+    <deploymentProvider codebase="https://alleey.github.io/PreventScreenLock/PreventScreenLock.App.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\PreventScreenLock.App_1_0_0_0\PreventScreenLock.App.dll.manifest" size="3972">
+    <dependentAssembly dependencyType="install" codebase="Application Files\PreventScreenLock.App_1_0_0_0\PreventScreenLock.App.dll.manifest" size="3979">
       <assemblyIdentity name="PreventScreenLock.App.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/k/Ekg2KJUJM6fq6K7QamNE1Z2e0J4KT0Kt8xjHKqFU=</dsig:DigestValue>
+        <dsig:DigestValue>SaA2htLEgRbNaRQvicp/aXsYLMXz7siYc8hMy0oT7Dk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
