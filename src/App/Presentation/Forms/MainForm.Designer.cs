@@ -47,19 +47,19 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(153, 6);
+            toolStripSeparator1.Size = new Size(134, 6);
             // 
             // screenLockToolStripMenuItem
             // 
             screenLockToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disableToolStrip });
             screenLockToolStripMenuItem.Name = "screenLockToolStripMenuItem";
-            screenLockToolStripMenuItem.Size = new Size(156, 24);
+            screenLockToolStripMenuItem.Size = new Size(137, 22);
             screenLockToolStripMenuItem.Text = "Screen &Lock";
             // 
             // disableToolStrip
             // 
             disableToolStrip.Name = "disableToolStrip";
-            disableToolStrip.Size = new Size(142, 26);
+            disableToolStrip.Size = new Size(112, 22);
             disableToolStrip.Text = "Disable";
             disableToolStrip.Click += disableToolStrip_Click;
             // 
@@ -67,9 +67,10 @@
             // 
             btnPreventLock.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnPreventLock.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPreventLock.Location = new Point(14, 97);
+            btnPreventLock.Location = new Point(12, 73);
+            btnPreventLock.Margin = new Padding(3, 2, 3, 2);
             btnPreventLock.Name = "btnPreventLock";
-            btnPreventLock.Size = new Size(419, 155);
+            btnPreventLock.Size = new Size(367, 116);
             btnPreventLock.TabIndex = 0;
             btnPreventLock.Text = "Disable Screen Lock";
             btnPreventLock.UseVisualStyleBackColor = true;
@@ -80,28 +81,28 @@
             contextMenuStrip.ImageScalingSize = new Size(20, 20);
             contextMenuStrip.Items.AddRange(new ToolStripItem[] { screenLockToolStripMenuItem, toolStripSeparator1, showToolStrip, exitToolStrip });
             contextMenuStrip.Name = "contextMenuStrip";
-            contextMenuStrip.Size = new Size(157, 82);
+            contextMenuStrip.Size = new Size(138, 76);
             // 
             // showToolStrip
             // 
             showToolStrip.Name = "showToolStrip";
-            showToolStrip.Size = new Size(156, 24);
+            showToolStrip.Size = new Size(137, 22);
             showToolStrip.Text = "&Show";
             showToolStrip.Click += showToolStrip_Click;
             // 
             // exitToolStrip
             // 
             exitToolStrip.Name = "exitToolStrip";
-            exitToolStrip.Size = new Size(156, 24);
+            exitToolStrip.Size = new Size(137, 22);
             exitToolStrip.Text = "E&xit";
             exitToolStrip.Click += exitToolStrip_Click;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label1.Location = new Point(13, 9);
+            label1.Location = new Point(11, 7);
             label1.Name = "label1";
-            label1.Size = new Size(421, 45);
+            label1.Size = new Size(368, 34);
             label1.TabIndex = 1;
             label1.Text = "Prevents screen locks, even under domain-enforced policies. Keep your screen active during critical tasks without interruptions.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -109,9 +110,9 @@
             // linkSettings
             // 
             linkSettings.AutoSize = true;
-            linkSettings.Location = new Point(312, 60);
+            linkSettings.Location = new Point(273, 45);
             linkSettings.Name = "linkSettings";
-            linkSettings.Size = new Size(122, 20);
+            linkSettings.Size = new Size(101, 15);
             linkSettings.TabIndex = 2;
             linkSettings.TabStop = true;
             linkSettings.Text = "Launch options ...";
@@ -119,14 +120,15 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(445, 264);
+            ClientSize = new Size(389, 198);
             Controls.Add(linkSettings);
             Controls.Add(label1);
             Controls.Add(btnPreventLock);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "MainForm";
             SizeGripStyle = SizeGripStyle.Hide;

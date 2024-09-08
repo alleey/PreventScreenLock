@@ -1,20 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <ApplicationIcon>Resources\cloud.ico</ApplicationIcon>
-    <AssemblyName>PreventScreenLock.App</AssemblyName>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PreventScreenLock.App</RootNamespace>
-    <StartupObject>PreventScreenLock.App.Program</StartupObject>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>PreventScreenLock.App.Program</StartupObject>
+    <AssemblyName>PreventScreenLock.App</AssemblyName>
+    <RootNamespace>PreventScreenLock.App</RootNamespace>
+    <ApplicationIcon>Resources\unlocked.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\cloud.ico" />
+    <Compile Remove="Utilities\**" />
+    <EmbeddedResource Remove="Utilities\**" />
+    <None Remove="Utilities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\unlocked.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,10 +39,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Utilities\" />
   </ItemGroup>
 
 </Project>

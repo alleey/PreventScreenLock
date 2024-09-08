@@ -66,3 +66,6 @@ if (Test-Path $sourceIndexFilePath) {
 } else {
     Write-Error "Source file $sourceIndexFilePath does not exist"
 }
+
+Remove-Item -Path (Join-Path -Path $outDir -ChildPath 'Launcher.exe')
+Remove-Item -Path (Join-Path -Path $outDir -ChildPath "${appName}*.exe")

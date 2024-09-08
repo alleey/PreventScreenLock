@@ -1,7 +1,8 @@
+using PreventScreenLock.App.Core.Extensions;
 using PreventScreenLock.App.Core.Interfaces;
 using PreventScreenLock.App.Infrastructure.Services;
 using PreventScreenLock.App.Presentation;
-using System.Reflection;
+using PreventScreenLock.App.Properties;
 
 namespace PreventScreenLock.App
 {
@@ -21,41 +22,47 @@ namespace PreventScreenLock.App
             _notificationService = notificationService;
 
             InitializeComponent();
-            string version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "1.0.0.0";
-            this.Text = $"{UIConstants.AppTitle} v{version}";
+            this.Text = $"{UIConstants.AppTitleWithVersion}";
 
             _notificationService.RequestAttention += ShowMainWindow;
+
+            this.Icon = _disableScreenLockService.IsScreenLockDisabled() ? Resources.IconUnlocked : Resources.IconLocked;
+            _disableScreenLockService.LockStatusChanged += (ScreenLockStatus status) =>
+            {
+                this.Icon = status == ScreenLockStatus.Disabled ? Resources.IconUnlocked : Resources.IconLocked;
+            };
+
             if (launchSettings.StartMinimized)
             {
                 HideMainWindow();
             }
             if (launchSettings.AutoDisable)
             {
-                DisableLocking();
+                DisableLockingControls();
             }
         }
 
         private void btnPreventLock_Click(object sender, EventArgs e)
         {
-            if (!_disableScreenLockService.IsLocked)
+            if (!_disableScreenLockService.IsScreenLockDisabled())
             {
-                DisableLocking();
+                DisableLockingControls();
                 HideMainWindow();
             }
             else
             {
-                EnableLocking();
+                EnableLockingControls();
             }
         }
 
-        private void EnableLocking()
+        private void EnableLockingControls()
         {
             btnPreventLock.Text = "&Disable Screen Lock";
             disableToolStrip.Text = "&Disable";
             _disableScreenLockService.Stop();
         }
 
-        private void DisableLocking()
+        private void DisableLockingControls()
         {
             btnPreventLock.Text = "&Enable Screen Lock";
             disableToolStrip.Text = "&Enable";

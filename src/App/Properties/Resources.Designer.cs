@@ -59,13 +59,24 @@ namespace PreventScreenLock.App.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon IconNotification {
-            get {
-                object obj = ResourceManager.GetObject("IconNotification", resourceCulture);
+        internal static System.Drawing.Icon IconLocked
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("IconLocked", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+
+        internal static System.Drawing.Icon IconUnlocked
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("IconUnlocked", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

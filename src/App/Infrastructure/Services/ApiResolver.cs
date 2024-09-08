@@ -1,5 +1,4 @@
 ﻿using PreventScreenLock.App.Core.Interfaces;
-using System;
 using System.Runtime.InteropServices;
 
 namespace PreventScreenLock.App.Infrastructure.Services

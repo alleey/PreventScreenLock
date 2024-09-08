@@ -1,18 +1,26 @@
-﻿using PreventScreenLock.App.Properties;
-using System.Windows.Forms;
+﻿using PreventScreenLock.App.Core.Extensions;
+using PreventScreenLock.App.Infrastructure.Services;
+using PreventScreenLock.App.Properties;
 
 namespace PreventScreenLock.App
 {
     public class NotificationService : INotificationService, IDisposable
     {
         private readonly NotifyIcon _notifyIcon;
+        private readonly IDisableScreenLockService _disableScreenLockService;
+
         public event Action? RequestAttention;
 
-        public NotificationService()
+        public NotificationService(IDisableScreenLockService disableScreenLockService)
         {
+            _disableScreenLockService = disableScreenLockService;
             _notifyIcon = new NotifyIcon();
-            _notifyIcon.Icon = Resources.IconNotification;
             _notifyIcon.MouseDoubleClick += _notifyIcon_MouseDoubleClick;
+            _notifyIcon.Icon = _disableScreenLockService.IsScreenLockDisabled() ? Resources.IconUnlocked : Resources.IconLocked;
+            _disableScreenLockService.LockStatusChanged += (ScreenLockStatus status) =>
+            {
+                _notifyIcon.Icon = status == ScreenLockStatus.Disabled ? Resources.IconUnlocked : Resources.IconLocked;
+            };
         }
 
         public void ShowBalloonTip(string title, string text)
